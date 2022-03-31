@@ -475,24 +475,18 @@ int main()
 
 
                 while(!pilavacia (&DADA5)){
-                    if(tope(&DADA5) > tope(&LIMITE)){
+                    if(tope(&DADA5) >= tope(&LIMITE)){
                         apilar(&MAYORES, desapilar(&DADA5));
                     }
-                    else if(tope(&DADA5) < tope(&LIMITE)){
+                    else{
                         apilar(&MENORES, desapilar(&DADA5));
-                        }
-                    else
-                        apilar(&iguales2,desapilar(&DADA5));
+                    }
                 }
                 printf("Pila Menores:\n");
                 mostrar(&MENORES);
 
                 printf("\nPila Mayores:\n");
                 mostrar(&MAYORES);
-
-                printf("\nPila iguales");
-                mostrar(&iguales2);
-
 
                 system("pause");
                 return 0;
@@ -561,24 +555,71 @@ int main()
                 return 0;
 
         case 17:    ;               //Ejercicio 17
+                int continuar8;
+
+                Pila OriGeN,DistintO,Mayor;
+                inicpila (&OriGeN);
+                inicpila (&DistintO);
+                inicpila (&Mayor);
 
                 printf("Para el ejercicio ''Cargar por teclado una pila ORIGEN y pasar a la pila DISTINTO todos aquellos elementos\n que preceden al valor 5\n (elementos entre el tope y el valor 5). \nNo se asegura que exista algun valor 5'', se realizo el siguiente programa:\n\n");
-                printf("int main() { \nPila Origen, Distinto;\ninicpila(&Origen);\ninicpila(&Distinto);\nleer(&Origen);\nif (!pilaVacia(&Origen)){ \n   while (tope(&Origen) != 5) {\n   apilar (&Distinto, desapilar(&Origen));\n } \n }\n}\n\n");
+                printf("\n\nint main() { \nPila Origen, Distinto;\ninicpila(&Origen);\ninicpila(&Distinto);\nleer(&Origen);\nif (!pilaVacia(&Origen)){ \n   while (tope(&Origen) != 5) {\n   apilar (&Distinto, desapilar(&Origen));\n } \n }\n}\n\n");
 
-                printf("\n Respuesta A:No, no lo resuelve\n");
+                printf("\n Respuesta A:No, no lo resuelve\n\n");
 
-                printf("Respuesta B:Tiene varios errores, el primero:Se carga 1 solo valor a Origen y entra al while\n el segundo:El while fija todo lo que sea desigual a 5(no lo que le precede) y lo manda a distinto\n tercero:el problema de que no hay una estructura repetitiva y tampoco cierra el else.\n");
+                printf("Respuesta B:Tiene varios errores, el primero:Se carga 1 solo valor a Origen y entra al while\n el segundo:El while fija todo lo que sea desigual a 5(no lo que le precede) y lo manda a distinto\n tercero:el problema de que no hay una estructura repetitiva y tampoco cierra el else.\n\n");
 
-                printf("Respuesta C:\n")
+                printf("Respuesta C:\n");
 
 
+                    do
+                        {
+                        printf("Ingrese datos de la pila Origen\n");
+                        leer (&OriGeN);
+                        printf("\nDesea ingresar otro dato? 1(si), 0(no) \n\n");
+                        scanf ("%i", &continuar8) ;
+                        printf ("\n");
+                        }
+                    while(continuar8!=0);
+
+
+                    while(!pilavacia (&OriGeN)){
+                        if(tope(&OriGeN) < 5){
+                                apilar(&DistintO, desapilar(&OriGeN));
+                            }
+                        else{
+                                apilar(&Mayor, desapilar(&OriGeN));
+                            }
+                        }
+                    while(!pilavacia (&Mayor)){
+                            apilar(&OriGeN, desapilar(&Mayor));
+                            }
+
+                    printf("Los numeros que preceden a 5 son:\n");
+
+                    mostrar (&OriGeN);
+
+                    printf("los demas son: \n");
+
+                    mostrar (&DistintO);
+
+                printf("\n\nRespuesta D: Los componentes son los siguientes: El Do que pide los datos de la pila es un algoritmo que llena la variable OriGeN\nEl while que le precede analiza cada tope y lo compara con el numero 5.\nHaciendo que cada numero mayor al 5 se vaya a la pila distinto y cada numero menor a la pila origen.\nLuego las lineas del printf y los ''mostrar(&)'' muestran los resultados del codigo en pantalla.\n\n");
 
                 system("pause");
                 return 0;
 
 
+
         case 18:    ;               //Ejercicio 18
-                printf("");
+                printf("Dado el siguiente ciclo (Pila1, Pila2 y Descarte son pilas): \n\n\nwhile ( (!pilaVacia(&Pila1)) && (!pilaVacia(&Pila2)) ) { \n      apilar (&Descarte, desapilar(&Pila1));\n        apilar (&Descarte, desapilar(&Pila2));\n} ");
+                printf("Respuesta A:La condicion es la de realizar el algoritmo hasta que tanto Pila 1 como Pila 2 estén totalmente vacias\n\n");
+                printf("Respuesta B:Solo hay un estado posible, ambas pilas deben estár vacias para salir del ciclo while\n\n");
+
+                system("pause");
+                return 0;
+
+
+
     ///////////////////////////////////////////DEFAULT///////////////////////////////////////////////////
     default:
         ;
